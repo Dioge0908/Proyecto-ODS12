@@ -124,11 +124,20 @@
         transition: background-color 0.3s ease;
         }
 
-.btn-subir:hover {
-  background-color: #0b5ed7;
-}
+        .btn-subir:hover {
+        background-color: #0b5ed7;
+        }
 
-.btn-subir i {
-  color: white; 
-}
-   
+        .btn-subir i {
+        color: white; 
+        }
+        .nav-tabs .nav-link {
+            font-size: 0.85rem;
+            padding: 10px 10px;
+        }
+        @media (min-width: 768px) {
+            .nav-tabs .nav-link {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+        }

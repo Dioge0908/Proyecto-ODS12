@@ -6,20 +6,6 @@
     <title>Registro de Eventos y Usuario - ODS 12</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Asumiendo que style/style.css existe, como en tus otros archivos -->
-    <!-- <link rel="stylesheet" href="style/style.css"> -->
-    <style>
-        .nav-tabs .nav-link {
-            font-size: 0.85rem;
-            padding: 10px 10px;
-        }
-        @media (min-width: 768px) {
-            .nav-tabs .nav-link {
-                font-size: 1rem;
-                padding: 10px 15px;
-            }
-        }
-    </style>
 </head>
 <body>
     <section class="form-section py-5" id="registro">
@@ -32,27 +18,22 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
 
-                    <!-- Navegación de Pestañas -->
                     <ul class="nav nav-tabs nav-fill mb-3" id="registroTabs" role="tablist">
-                        <!-- Pestaña de Registro de Consumidor -->
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#registro-usuario" type="button" role="tab" aria-controls="registro-usuario" aria-selected="false">
                                 <i class="fas fa-user-plus me-2"></i>1. Consumidor (Completo)
                             </button>
                         </li>
-                        <!-- Pestaña de Registro de Centro de Acopio -->
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="centro-acopio-tab" data-bs-toggle="tab" data-bs-target="#registro-centro-acopio" type="button" role="tab" aria-controls="registro-centro-acopio" aria-selected="false">
                                 <i class="fas fa-warehouse me-2"></i>2. Centro de Acopio
                             </button>
                         </li>
-                        <!-- Pestaña de Compra -->
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="compra-tab" data-bs-toggle="tab" data-bs-target="#registro-compra" type="button" role="tab" aria-controls="registro-compra" aria-selected="true">
                                 <i class="fas fa-shopping-cart me-2"></i>3. Registrar Compra
                             </button>
                         </li>
-                        <!-- Pestaña de Disposición -->
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="disposicion-tab" data-bs-toggle="tab" data-bs-target="#registro-disposicion" type="button" role="tab" aria-controls="registro-disposicion" aria-selected="false">
                                 <i class="fas fa-recycle me-2"></i>4. Registrar Disposición
@@ -60,44 +41,42 @@
                         </li>
                     </ul>
 
-                    <!-- Contenido de las Pestañas -->
                     <div class="tab-content" id="registroTabsContent">
                         
-                        <!-- Pestaña 1: REGISTRO DE USUARIO CONSUMIDOR (Tabla: usuarios, tipo_usuario_id=1) -->
                         <div class="tab-pane fade" id="registro-usuario" role="tabpanel" aria-labelledby="usuario-tab">
                             <div class="card shadow">
                                 <div class="card-body p-4">
-                                    <h4 class="text-success mb-3">1. Registro de Nuevo Consumidor (Completo)</h4>
+                                    <h4 class="text-success mb-3">1. Registro de Nuevo Consumidor</h4>
                                     <p class="text-muted">Completa todos los campos para crear tu cuenta de consumidor.</p>
                                     
                                     <form id="formUsuario">
                                         <div class="mb-3">
                                             <label for="usuario_nombre" class="form-label">Nombre Completo *</label>
-                                            <input type="text" class="form-control" id="usuario_nombre" required>
+                                            <input type="text" class="form-control" id="usuario_nombre" name="nombre" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="usuario_email" class="form-label">Correo Electrónico *</label>
-                                            <input type="email" class="form-control" id="usuario_email" required>
+                                            <input type="email" class="form-control" id="usuario_email" name="email" required>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label for="usuario_telefono" class="form-label">Teléfono</label>
-                                                <input type="tel" class="form-control" id="usuario_telefono">
+                                                <input type="tel" class="form-control" id="usuario_telefono" name="telefono">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="usuario_ciudad" class="form-label">Ciudad *</label>
-                                                <input type="text" class="form-control" id="usuario_ciudad" required>
+                                                <input type="text" class="form-control" id="usuario_ciudad" name="ciudad" required>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="usuario_direccion" class="form-label">Dirección</label>
-                                            <input type="text" class="form-control" id="usuario_direccion" placeholder="Calle, número, barrio, etc.">
+                                            <input type="text" class="form-control" id="usuario_direccion" name="direccion" placeholder="Calle, número, barrio, etc."required >
                                         </div>
+
+                                        <input type="hidden" id="usuario_tipo_id" name="tipo_usuario_id" value="1">
                                         
-                                        <!-- tipo_usuario_id = 1 (Consumidor) -->
-                                        <input type="hidden" id="usuario_tipo_id" value="1">
                                         <div class="alert alert-warning py-2 small" role="alert">
-                                            **Tipo de Usuario:** Consumidor (`tipo_usuario_id = 1`). El sistema autogenerará tu `usuario_id`.
+                                            Los campos con asterisco (*) son obligatorios.
                                         </div>
 
                                         <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">
@@ -108,7 +87,6 @@
                             </div>
                         </div>
                         
-                        <!-- Pestaña 2: REGISTRO DE CENTRO DE ACOPIO (Tabla: usuarios, tipo_usuario_id=2) -->
                         <div class="tab-pane fade" id="registro-centro-acopio" role="tabpanel" aria-labelledby="centro-acopio-tab">
                             <div class="card shadow">
                                 <div class="card-body p-4">
@@ -118,31 +96,31 @@
                                     <form id="formCentroAcopio">
                                         <div class="mb-3">
                                             <label for="centro_nombre" class="form-label">Nombre o Razón Social del Centro *</label>
-                                            <input type="text" class="form-control" id="centro_nombre" required>
+                                            <input type="text" class="form-control" id="centro_nombre" name="nombre" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="centro_email" class="form-label">Correo Electrónico de Contacto *</label>
-                                            <input type="email" class="form-control" id="centro_email" required>
+                                            <input type="email" class="form-control" id="centro_email" name="email" required>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label for="centro_telefono" class="form-label">Teléfono de Contacto *</label>
-                                                <input type="tel" class="form-control" id="centro_telefono" required>
+                                                <input type="tel" class="form-control" id="centro_telefono" name="telefono" required>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="centro_ciudad" class="form-label">Ciudad de Operación *</label>
-                                                <input type="text" class="form-control" id="centro_ciudad" required>
+                                                <input type="text" class="form-control" id="centro_ciudad" name="ciudad" required>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="centro_direccion" class="form-label">Dirección Completa *</label>
-                                            <input type="text" class="form-control" id="centro_direccion" placeholder="Calle, número, barrio, etc." required>
+                                            <input type="text" class="form-control" id="centro_direccion" name="direccion" placeholder="Calle, número, barrio, etc." required>
                                         </div>
                                         
-                                        <!-- tipo_usuario_id = 2 (Centro de Acopio) -->
-                                        <input type="hidden" id="centro_tipo_id" value="2">
+                                        <input type="hidden" id="centro_tipo_id" name="tipo_usuario_id" value="2">
+                                        
                                         <div class="alert alert-primary py-2 small" role="alert">
-                                            **Tipo de Usuario:** Centro de Acopio (`tipo_usuario_id = 2`). El sistema autogenerará su `usuario_id`.
+                                            Los campos con asterisco (*) son obligatorios.
                                         </div>
 
                                         <button type="submit" class="btn btn-info text-white btn-lg w-100 mt-3">
@@ -153,7 +131,6 @@
                             </div>
                         </div>
 
-                        <!-- Pestaña 3: REGISTRO DE COMPRA (Tabla: compras) -->
                         <div class="tab-pane fade show active" id="registro-compra" role="tabpanel" aria-labelledby="compra-tab">
                             <div class="card shadow">
                                 <div class="card-body p-4">
@@ -165,28 +142,26 @@
                                     
                                     <form id="formCompra">
                                         
-                                        <!-- CAMPOS DE IDENTIFICACIÓN REQUERIDOS POR EL USUARIO -->
                                         <div class="mb-3">
                                             <label for="compra_usuario_nombre" class="form-label">Nombre Completo *</label>
-                                            <input type="text" class="form-control" id="compra_usuario_nombre" required>
+                                            <input type="text" class="form-control" id="compra_usuario_nombre" name="nombre_usuario" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="compra_usuario_email" class="form-label">Correo Electrónico *</label>
-                                            <input type="email" class="form-control" id="compra_usuario_email" required>
+                                            <input type="email" class="form-control" id="compra_usuario_email" name="email_usuario" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="compra_usuario_ciudad" class="form-label">Ciudad *</label>
-                                            <input type="text" class="form-control" id="compra_usuario_ciudad" required>
+                                            <input type="text" class="form-control" id="compra_usuario_ciudad" name="ciudad_usuario" required>
                                         </div>
-                                        <!-- FIN CAMPOS DE IDENTIFICACIÓN -->
+                                        
 
                                         <hr>
 
                                         <div class="mb-3">
                                             <label for="compra_producto_id" class="form-label">Producto Adquirido *</label>
-                                            <select class="form-select" id="compra_producto_id" required>
+                                            <select class="form-select" id="compra_producto_id" name="producto_id" required>
                                                 <option value="" disabled selected>Selecciona un producto...</option>
-                                                <!-- En una app real, estos datos vendrían de la tabla 'productos' -->
                                                 <option value="1">Botella PET 600ml</option>
                                                 <option value="2">Vaso de vidrio</option>
                                                 <option value="3">Cuaderno A4</option>
@@ -198,11 +173,11 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label for="compra_fecha" class="form-label">Fecha de Compra *</label>
-                                                <input type="date" class="form-control" id="compra_fecha" required>
+                                                <input type="date" class="form-control" id="compra_fecha" name="fecha_compra" required>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="compra_cantidad" class="form-label">Cantidad Comprada *</label>
-                                                <input type="number" class="form-control" id="compra_cantidad" min="1" value="1" required>
+                                                <input type="number" class="form-control" id="compra_cantidad" name="cantidad" min="1" value="1" required>
                                             </div>
                                         </div>
 
@@ -214,7 +189,6 @@
                             </div>
                         </div>
 
-                        <!-- Pestaña 4: REGISTRO DE DISPOSICIÓN (Tabla: disposiciones) -->
                         <div class="tab-pane fade" id="registro-disposicion" role="tabpanel" aria-labelledby="disposicion-tab">
                             <div class="card shadow">
                                 <div class="card-body p-4">
@@ -223,47 +197,44 @@
                                         
                                         <div class="mb-3">
                                             <label for="disposicion_compra_id" class="form-label">ID de la Compra Original a Disponer *</label>
-                                            <select class="form-select" id="disposicion_compra_id" required>
+                                            <select class="form-select" id="disposicion_compra_id" name="compra_id" required>
                                                 <option value="" disabled selected>Selecciona una compra previa...</option>
-                                                <!-- En una app real, aquí se listarían las compras del usuario logueado -->
-                                                <option value="1">(2x Botella PET) - Laura Gómez (ID: 1001)</option>
-                                                <option value="2"> (1x Cuaderno A4) - Juan Pérez (ID: 1002)</option>
-                                                <option value="3"> (6x Lata de aluminio) - Ana Torres (ID: 1003)</option>
+                                                <option value="1">Compra ID: 1 (2x Botella PET)</option>
+                                                <option value="2">Compra ID: 2 (1x Cuaderno A4)</option>
+                                                <option value="3">Compra ID: 3 (6x Lata de aluminio)</option>
                                             </select>
                                             <div class="form-text">
-                                                Esto vincula la disposición con la compra (compra_id).
+                                                Selecciona la compra que deseas disponer.
                                             </div>
                                         </div>
 
                                         <div class="mb-3">
-                                            <!-- CAMBIO: Ahora es un select con nombres en lugar de un input para el ID -->
                                             <label for="disposicion_centro_id" class="form-label">Centro de Acopio (quién recibe) *</label>
-                                            <select class="form-select" id="disposicion_centro_id" required>
+                                            <select class="form-select" id="disposicion_centro_id" name="centro_acopio_id" required>
                                                 <option value="" disabled selected>Selecciona un centro de acopio...</option>
-                                                <!-- Los valores son el usuario_id (tipo_usuario_id = 2) -->
-                                                <option value="2001">Recicladora La Esperanza (ID: 2001)</option>
-                                                <option value="2002">Punto Limpio Central (ID: 2002)</option>
-                                                <option value="2003">Acopio Urbano R (ID: 2003)</option>
+                                                <option value="2001">Recicladora La Esperanza</option>
+                                                <option value="2002">Punto Limpio Central</option>
+                                                <option value="2003">Acopio Urbano R</option>
                                             </select>
                                             <div class="form-text">
-                                                Muestra el nombre, pero guarda el ID del Centro.
+                                                Selecciona el centro de acopio que recibirá la disposición.
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label for="disposicion_fecha" class="form-label">Fecha de Disposición *</label>
-                                                <input type="date" class="form-control" id="disposicion_fecha" required>
+                                                <input type="date" class="form-control" id="disposicion_fecha" name="fecha" required>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="disposicion_cantidad" class="form-label">Cantidad Dispuesta *</label>
-                                                <input type="number" class="form-control" id="disposicion_cantidad" min="1" value="1" required>
+                                                <input type="number" class="form-control" id="disposicion_cantidad" name="cantidad" min="1" value="1" required>
                                             </div>
                                         </div>
                                         
                                         <div class="mb-3">
                                             <label for="disposicion_peso_kg" class="form-label">Peso Total (kg) (Opcional)</label>
-                                            <input type="number" class="form-control" id="disposicion_peso_kg" step="0.01" placeholder="Ej: 0.5">
+                                            <input type="number" class="form-control" id="disposicion_peso_kg" name="peso_kg" step="0.01" placeholder="Ej: 0.5">
                                         </div>
 
                                         <button type="submit" class="btn btn-success btn-lg w-100 mt-3">
@@ -281,101 +252,6 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // --- Manejadores de Formularios ---
-
-        // Pestaña 1: Registro de Usuario (Consumidor)
-        document.getElementById('formUsuario').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nuevoUsuarioId = Math.floor(Math.random() * 1000) + 1000;
-
-            alert('¡Consumidor registrado exitosamente!\n\nDatos (simulados) para tabla USUARIOS:\n' +
-                'Nombre: ' + document.getElementById('usuario_nombre').value + '\n' +
-                'Email: ' + document.getElementById('usuario_email').value + '\n' +
-                'Ciudad: ' + document.getElementById('usuario_ciudad').value + '\n' +
-                'Tipo Usuario ID: ' + document.getElementById('usuario_tipo_id').value + ' (Consumidor)\n\n' +
-                '*** ID Autogenerado (simulado): ' + nuevoUsuarioId + ' ***'
-            );
-            
-            this.reset();
-            // Mover a la pestaña de compras después del registro
-            var tab = new bootstrap.Tab(document.getElementById('compra-tab'));
-            tab.show();
-        });
-
-        // Pestaña 2: Registro de Centro de Acopio
-        document.getElementById('formCentroAcopio').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nuevoCentroId = Math.floor(Math.random() * 1000) + 2000;
-
-            alert('¡Centro de Acopio registrado exitosamente!\n\nDatos (simulados) para tabla USUARIOS:\n' +
-                'Nombre: ' + document.getElementById('centro_nombre').value + '\n' +
-                'Email: ' + document.getElementById('centro_email').value + '\n' +
-                'Ciudad: ' + document.getElementById('centro_ciudad').value + '\n' +
-                'Dirección: ' + document.getElementById('centro_direccion').value + '\n' +
-                'Tipo Usuario ID: ' + document.getElementById('centro_tipo_id').value + ' (Centro de Acopio)\n\n' +
-                '*** ID Autogenerado (simulado): ' + nuevoCentroId + ' ***'
-            );
-            
-            this.reset();
-            // Mover a la pestaña de compras
-            var tab = new bootstrap.Tab(document.getElementById('compra-tab'));
-            tab.show();
-        });
-
-
-        // Pestaña 3: Registro de Compras
-        document.getElementById('formCompra').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // SIMULACIÓN: Los datos de identificación serán usados en el backend para obtener o crear el usuario ID.
-            const nombre = document.getElementById('compra_usuario_nombre').value;
-            const email = document.getElementById('compra_usuario_email').value;
-            const ciudad = document.getElementById('compra_usuario_ciudad').value;
-            
-            // SIMULACIÓN DE OBTENCIÓN DE ID DESPUÉS DE LA VALIDACIÓN/CREACIÓN
-            const usuarioIdSimulado = 'ID_CONSUMIDOR_VALIDADO'; 
-
-            alert('¡Compra registrada exitosamente!\n\nDatos de Usuario (simulados para el backend):\n' +
-                'Nombre: ' + nombre + '\n' +
-                'Email: ' + email + '\n' +
-                'Ciudad: ' + ciudad + '\n' +
-                '*** ID Usado para tabla COMPRAS: ' + usuarioIdSimulado + ' ***\n\n' +
-                'Datos de la Compra:\n' +
-                'Producto ID: ' + document.getElementById('compra_producto_id').value + '\n' +
-                'Fecha: ' + document.getElementById('compra_fecha').value + '\n' +
-                'Cantidad: ' + document.getElementById('compra_cantidad').value
-            );
-            
-            this.reset();
-        });
-
-        // Pestaña 4: Registro de Disposición
-        document.getElementById('formDisposicion').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Obtenemos el ID del centro seleccionado (el 'value' del select)
-            const centroAcopioId = document.getElementById('disposicion_centro_id').value;
-            
-            // Buscamos el texto visible del centro seleccionado (solo para el mensaje de alerta)
-            const centroSelect = document.getElementById('disposicion_centro_id');
-            const centroAcopioNombre = centroSelect.options[centroSelect.selectedIndex].text;
-
-            // Aquí iría la lógica para enviar los datos a la API (Tabla 'disposiciones')
-            
-            alert('¡Disposición registrada exitosamente!\n\nDatos (simulados) para tabla DISPOSICIONES:\n' +
-                'Compra ID: ' + document.getElementById('disposicion_compra_id').value + '\n' +
-                'Centro Acopio (Seleccionado): ' + centroAcopioNombre + '\n' +
-                '*** ID (usuario_id) enviado al backend: ' + centroAcopioId + ' ***\n' +
-                'Fecha: ' + document.getElementById('disposicion_fecha').value + '\n' +
-                'Cantidad: ' + document.getElementById('disposicion_cantidad').value + '\n' +
-                'Peso: ' + document.getElementById('disposicion_peso_kg').value + ' kg'
-            );
-            
-            this.reset();
-        });
-    </script>
+    
 </body>
 </html>
