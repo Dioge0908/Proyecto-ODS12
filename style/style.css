@@ -1,13 +1,14 @@
 :root {
-            --verde-ods: #2e7d32;
-            --verde-claro: #4caf50;
-            --azul-claro: #e3f2fd;
-            --gris-claro: #f5f5f5;
-        }
+    --verde-oscuro: #235347;   
+    --verde-medio: #8CB79B;    
+    --crema-fondo: #DBF0DD;    
+    --blanco: #ffffff;
+}
         body {
-            font-family: '', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ffffff;
-        }
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--crema-fondo) !important; /* Fondo suave y amigable */
+    color: var(--verde-oscuro);
+}
         .title {
             font-size: 1.5rem;
             font-weight: bold;
@@ -15,18 +16,57 @@
             padding-left: 5px;
             ;
         }
-        .navbar {
-            background: linear-gradient(135deg, #76923a, var(--verde-claro));
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
+        /* BARRA DE NAVEGACIÓN CON GRADIENTE */
+.navbar {
+    /* Gradiente que va de arriba-izquierda a abajo-derecha */
+    background: linear-gradient(135deg, #8CB79B 0%, #235347 100%) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
+    border-bottom: 2px solid #235347;
+}
+
+/* Estilo base de los enlaces */
+.navbar-nav .nav-link {
+    position: relative;
+    color: #051f20 !important; /* Verde oscuro inicial para contraste sobre el verde claro */
+    font-weight: 700;
+    padding: 8px 20px !important;
+    border-radius: 8px; /* Bordes redondeados para el fondo del hover */
+    transition: all 0.4s ease;
+}
+
+/* EFECTO DE CONTRASTE AL PASAR EL CURSOR (HOVER) */
+.navbar-nav .nav-link:hover {
+    color: #ffffff !important; /* El texto cambia a blanco puro */
+    background-color: rgba(255, 255, 255, 0.15); /* Crea un efecto de "brillo" suave de fondo */
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+}
+
+/* LÍNEA ANIMADA MEJORADA */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 2px;
+    left: 50%;
+    background-color: #DBF0DD; /* Color crema para la línea */
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 60%; /* La línea crece al 60% del ancho del texto */
+}
         .hero-section {
-            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(76, 175, 80, 0.8)), url('https://placehold.co/1200x600/2e7d32/ffffff?text=Consumo+Sostenible') center/cover no-repeat;
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-        
+    background: linear-gradient(rgba(35, 83, 71, 0.8), rgba(140, 183, 155, 0.7)), 
+                url('https://placehold.co/1200x600/235347/ffffff?text=Consumo+Sostenible') center/cover no-repeat;
+    color: var(--crema-fondo);
+    /* Aumentamos el segundo valor (padding inferior) de 100px a 140px */
+    padding: 100px 0 140px 0; 
+    text-align: center;
+}
         .card-icon {
             width: 80px;
             height: 80px;
@@ -38,32 +78,79 @@
             margin: 0 auto 20px;
             color: black;
             font-size: 2rem;
+            transition: transform 0.5s ease;
         }
         
-        .feature-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        
-        .stats-card {
-            background: linear-gradient(135deg, var(--verde-ods), var(--verde-claro));
-            color: black;
-            border: 1px solid var(--verde-ods);
-            border-radius: 15px;
-            text-align: center;
-            padding: 10px;
-        }
+        /* ESTILO BASE DE LAS TARJETAS (CONSUMIDOR Y EMPRESA) */
+.feature-card {
+    background-color: var(--blanco);
+    border: 1px solid var(--verde-medio) !important;
+    border-radius: 15px; /* Bordes más redondeados para que sea amigable */
+    padding: 20px;
+    
+    /* La clave de la suavidad está aquí: 0.5s y cubic-bezier */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.4s ease;
+    
+    height: 100%;
+    overflow: hidden;
+}
 
-        .text-success {
-            color: #2e7d32;
-            text-decoration: none;
+/* EFECTO HOVER SUAVE */
+.feature-card:hover {
+    /* Un movimiento más sutil (de -10px a -8px para mayor suavidad) */
+    transform: translateY(-8px); 
+    
+    /* Sombra más difuminada y elegante */
+    box-shadow: 0 12px 24px rgba(35, 83, 71, 0.15); 
+    
+    /* Opcional: un cambio muy ligero en el color de fondo para feedback visual */
+    background-color: #fdfdfd; 
+}
 
-        }
+.feature-card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg); /* El icono solo crece un poco y gira suavemente */
+}
+        
+        /* TARJETAS Y ESTADÍSTICAS */
+/* ESTILO DE LOS RECUADROS DE INDICADORES */
+.stats-card {
+    /* Aplicando tus colores corporativos */
+    background: linear-gradient(145deg, var(--verde-medio), var(--verde-oscuro)) !important;
+    color: #ffffff !important;
+    
+    /* Centrado y forma */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* Dimensiones y bordes */
+    min-height: 200px; /* Asegura que todos tengan el mismo tamaño */
+    padding: 25px;
+    border-radius: 20px; /* Recuadros redondeados */
+    border: none;
+    
+    /* Transición para el hover */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+/* EFECTO HOVER PARA LOS RECUADROS */
+.stats-card:hover {
+    transform: translateY(-12px) scale(1.02); /* Se eleva y crece un poco */
+    box-shadow: 0 15px 30px rgba(35, 83, 71, 0.3); /* Sombra más profunda con tu color oscuro */
+    background: var(--verde-oscuro) !important; /* Se vuelve más sólido */
+}
+        
+/* Ajuste para los iconos dentro de los recuadros */
+.stats-card i {
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+    color: var(--crema-fondo);
+}
         .text-success:hover {            
             text-decoration: none;
             color: white;
@@ -89,10 +176,9 @@
         }
         
         .footer {
-            background: linear-gradient(135deg, var(--verde-ods), var(--verde-claro));
-            color: white;
-            padding: 40px 0;
-        }
+    background-color: var(--verde-oscuro) !important;
+    color: var(--crema-fondo);
+}
         
         .ods-badge {
             background-color:#457ABF;
@@ -112,20 +198,20 @@
         }
         .btn-subir {
         position: fixed;
-        bottom: 20px;
-        right: 30px;
-        background-color: #0d6efd;
+        bottom: 25px;
+        right: 25px;
+        background-color: var(--verde-oscuro);
         color: white;
         padding: 12px 16px;
-        border-radius: 50%;
+        border-radius: 40%;
         text-decoration: none;
         font-size: 20px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         transition: background-color 0.3s ease;
         }
 
         .btn-subir:hover {
-        background-color: #0b5ed7;
+        background-color: var(--verde-medio);
         }
 
         .btn-subir i {
@@ -141,3 +227,113 @@
                 padding: 10px 15px;
             }
         }
+
+        .btn-light {
+    background-color: var(--crema-fondo);
+    color: var(--verde-oscuro);
+    border: 2px solid var(--verde-oscuro);
+}
+
+.btn-light:hover {
+    background-color: var(--verde-oscuro);
+    color: var(--crema-fondo);
+}
+
+
+/* Login */
+body.auth-page {
+    background: linear-gradient(135deg, var(--crema-fondo) 0%, #c3e4c8 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/* Tarjeta principal de autenticación */
+.auth-card {
+    max-width: 440px;
+    margin: 1.5rem auto;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(35, 83, 71, 0.18);
+    overflow: hidden;
+    background: white;
+}
+
+/* Cabecera (header) con logo y título */
+.auth-header {
+    background: var(--verde-oscuro);
+    color: white;
+    padding: 2.2rem 1.6rem;
+    text-align: center;
+}
+
+.auth-header img {
+    max-width: 160px;
+    margin-bottom: 1.2rem;
+}
+
+.auth-header h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.auth-header p {
+    margin: 0.4rem 0 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+/* Pestañas (tabs) de login / registro */
+.nav-tabs .nav-link {
+    color: var(--verde-oscuro);
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-weight: 600;
+    padding: 0.9rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--verde-medio);
+    border-bottom-color: var(--verde-medio);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--verde-oscuro);
+    border-bottom: 3px solid var(--verde-oscuro);
+    background: transparent;
+}
+
+/* Botones principales (Iniciar sesión / Crear cuenta) */
+.btn-success {
+    background-color: var(--verde-oscuro);
+    border: none;
+    padding: 0.85rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: var(--verde-medio);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(35, 83, 71, 0.25);
+}
+
+/* Enlace "Volver al inicio" */
+.text-success {
+    color: var(--verde-oscuro) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.text-success:hover {
+    color: var(--verde-medio) !important;
+    text-decoration: underline;
+}
+
+
+
+
