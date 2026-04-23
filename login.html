@@ -19,12 +19,20 @@
 
             <div class="card auth-card mt-4 mb-4">
                 <div class="auth-header">
+<<<<<<< Updated upstream
                     <img src="img/LogoEcogr.png" alt="EcoGR" width="140" class="mb-3">
+=======
+                    <img src="img/LogoEcogr.png" alt="EcoGR" width="200" class="mb-3">
+>>>>>>> Stashed changes
                     <h4 class="mb-0">Bienvenido a EcoGR</h4>
                     <p class="mb-0 opacity-75">Consumo y producción sostenibles</p>
                 </div>
 
+<<<<<<< Updated upstream
                 <div class="card-body p-3">
+=======
+                <div class="card-body p-4 p-md-5">
+>>>>>>> Stashed changes
 
                     <!-- Pestañas -->
                     <ul class="nav nav-tabs mb-4 justify-content-center" id="authTabs" role="tablist">
@@ -36,6 +44,7 @@
                         </li>
                     </ul>
 
+<<<<<<< Updated upstream
                     <!-- LOGIN -->
 <div class="tab-pane fade show active" id="login" role="tabpanel">
     <form id="loginForm">
@@ -77,6 +86,43 @@
         </button>
     </form>
 </div>
+=======
+                    <div class="tab-content">
+                        <!-- LOGIN -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel">
+                            <form id="loginForm">
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Correo electrónico</label>
+                                    <input type="email" class="form-control" id="loginEmail" placeholder="ejemplo@correo.com" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="loginPassword" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="loginPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">Iniciar Sesión</button>
+                            </form>
+                        </div>
+
+                        <!-- REGISTRO -->
+                        <div class="tab-pane fade" id="register" role="tabpanel">
+                            <form id="registerForm">
+                                <div class="mb-3">
+                                    <label for="registerName" class="form-label">Nombre completo</label>
+                                    <input type="text" class="form-control" id="registerName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Correo electrónico</label>
+                                    <input type="email" class="form-control" id="registerEmail" placeholder="ejemplo@correo.com" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="registerPassword" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="registerPassword" minlength="6" required>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">Crear cuenta</button>
+                            </form>
+                        </div>
+                    </div>
+>>>>>>> Stashed changes
 
                     <div class="text-center mt-4">
                         <small class="text-muted">
@@ -99,6 +145,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 
+<<<<<<< Updated upstream
 // Variables 
 let correos = [];
 let claves = [];
@@ -182,6 +229,129 @@ function ejecutarLoginSimple() {
     
     iniciarSesion(correo, clave);
 }
+=======
+let nombres = ["admin","usuario"];
+const correos = ["admin@eco.com","user@eco.com"];
+const claves = ["admin123", "123456"];
+
+// registro de datos 
+function ejecutarRegistro() {
+    // Pedimos los datos al usuario mediante ventanas de entrada
+    let nombreNuevo = prompt("Registro: Ingresa tu nombre completo");
+    let correoNuevo = prompt("Registro: Ingresa tu correo electrónico");
+    let claveNueva = prompt("Registro: Ingresa tu contraseña");
+
+    let correoDuplicado = false;
+
+
+    for (let i = 0; i < correos.length; i++) {
+        if (correos[i] === correoNuevo) {
+            correoDuplicado = true;
+            break;
+        }
+    }
+
+
+    if (correoDuplicado === true) {
+        alert("Error: El correo " + correoNuevo + " ya está registrado.");
+    } else {
+        nombres.push(nombreNuevo);
+        correos.push(correoNuevo);
+        claves.push(claveNueva);
+        alert("¡Felicidades " + nombreNuevo + "! Tu cuenta ha sido creada.");
+    }
+}
+
+// --- 3. FUNCIÓN PARA LOGIN (Pide datos y compara) ---
+function ejecutarLogin() {
+    let correoIngresado = prompt("Login: Ingresa tu correo");
+    let claveIngresada = prompt("Login: Ingresa tu contraseña");
+
+    let ingresoExitoso = false;
+    let nombreUsuario = "";
+
+    // CICLO FOR: Buscamos en los arreglos lo que acabamos de registrar
+    for (let i = 0; i < correos.length; i++) {
+        if (correos[i] === correoIngresado && claves[i] === claveIngresada) {
+            ingresoExitoso = true;
+            nombreUsuario = nombres[i];
+            break;
+        }
+    }
+
+    // CONDICIONAL: Resultado del acceso
+    if (ingresoExitoso === true) {
+        alert("¡Bienvenido de nuevo" + nombreUsuario + "!");
+    } else {
+        alert("Acceso denegado. Los datos no coinciden con nuestros registros.");
+    }
+}
+
+
+
+document.getElementById("registerForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let nombreNuevo = document.getElementById("registerName").value;
+    let correoNuevo = document.getElementById("registerEmail").value;
+    let claveNueva = document.getElementById("registerPassword").value;
+
+    let correoDuplicado = false;
+
+    for (let i = 0; i < correos.length; i++) {
+        if (correos[i] === correoNuevo) {
+            correoDuplicado = true;
+            break;
+        }
+    }
+
+    if (correoDuplicado) {
+        alert("Este correo ya está registrado");
+    } else {
+        nombres.push(nombreNuevo);
+        correos.push(correoNuevo);
+        claves.push(claveNueva);
+
+        alert("Usuario registrado correctamente");
+
+        console.log(correos);
+
+        document.getElementById("registerForm").reset();
+    }
+});
+
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let correoIngresado = document.getElementById("loginEmail").value;
+    let claveIngresada = document.getElementById("loginPassword").value;
+
+    let ingresoExitoso = false;
+    let nombreUsuario = "";
+
+    for (let i = 0; i < correos.length; i++) {
+        if (correos[i] === correoIngresado && claves[i] === claveIngresada) {
+            ingresoExitoso = true;
+            nombreUsuario = nombres[i];
+            break;
+        }
+    }
+
+    if (ingresoExitoso) {
+        alert("¡Bienvenido " + nombreUsuario + "!");
+
+        //  AQUÍ DIFERENCIA ADMIN Y USUARIO
+        if(correoIngresado === "admin@eco.com"){
+            window.location.href = "index.html";
+        } else {
+            window.location.href = "index.html";
+        }
+
+    } else {
+        alert("Datos incorrectos");
+    }
+});
+>>>>>>> Stashed changes
 </script>
 </body>
 </html>

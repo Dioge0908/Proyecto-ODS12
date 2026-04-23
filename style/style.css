@@ -1,7 +1,13 @@
 :root {
+<<<<<<< Updated upstream
     --verde-oscuro: #235347;   
     --verde-medio: #8CB79B;    
     --crema-fondo: #DBF0DD;    
+=======
+    --verde-oscuro: #235347;   /* Tu color #235347 */
+    --verde-medio: #8CB79B;    /* Tu color #8CB79B */
+    --crema-fondo: #DBF0DD;    /* Tu color #DBF0DD */
+>>>>>>> Stashed changes
     --blanco: #ffffff;
 }
         body {
@@ -333,7 +339,10 @@ body.auth-page {
     color: var(--verde-medio) !important;
     text-decoration: underline;
 }
+<<<<<<< Updated upstream
 
 
 
 
+=======
+>>>>>>> Stashed changes
